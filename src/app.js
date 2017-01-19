@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { Header } from './components/common';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
   componentWillMount() {
@@ -18,7 +19,7 @@ class App extends Component {
     return (
       <View>
         <Header headerText="Personal Vital Signs" />
-        <Text>Hello!</Text>
+        <LoginForm />
       </View>
     );
   }
