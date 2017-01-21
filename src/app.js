@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { View } from 'react-native';
 import { Header, Button, CardSection, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
+import reducers from './reducers';
 
 class App extends Component {
   state = { loggedIn: null }
@@ -47,11 +50,15 @@ class App extends Component {
   }
 
   render() {
+    const store = createStore(reducers);
+
     return (
-      <View>
-        <Header headerText="Personal Vital Signs" />
-        {this.renderContent()}
-      </View>
+      <Provider store={store}>
+        <View>
+          <Header headerText="Personal Vital Signs" />
+          {this.renderContent()}
+        </View>
+      </Provider>
     );
   }
 }
